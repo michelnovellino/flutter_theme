@@ -1,36 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme/src/settingsPage.dart';
+import 'package:flutter_theme/src/pages/homePage.dart';
+import 'package:flutter_theme/src/pages/settingsPage.dart';
 
-class HomePage extends StatelessWidget {
-  static final String routeName = "home";
+class MenuDrawer extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        drawer: _renderDrawer(context),
-        appBar: AppBar(title: Text('HomePage')),
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text('Secondary color: '),
-              Divider(),
-              Text('Gender:'),
-              Divider(),
-              Text('Username: '),
-              Divider()
-            ],
-          ),
-        ));
-  }
-
-  Drawer _renderDrawer(BuildContext context) {
     return Drawer(
-      child: _createDrawer(context),
+      child: _renderDrawer(context),
     );
   }
 
-  ListView _createDrawer(BuildContext context) {
+  ListView _renderDrawer(BuildContext context) {
     return ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
@@ -47,7 +28,9 @@ class HomePage extends StatelessWidget {
             color: Colors.blue,
           ),
           title: Text('Pages'),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushReplacementNamed(context, HomePage.routeName);
+          },
         ),
         ListTile(
           leading: Icon(

@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme/src/homePage.dart';
-import 'package:flutter_theme/src/settingsPage.dart';
+import 'package:flutter_theme/src/pages/homePage.dart';
+import 'package:flutter_theme/src/pages/settingsPage.dart';
+import 'package:flutter_theme/src/shared/preferences/preferences.dart';
 
-void main() => runApp(Run());
+void main() async {
+  final preferences = new Preferences();
+  await preferences.initPrefs();
+
+  runApp(Run());
+}
 
 class Run extends StatelessWidget {
+    final preferences = new Preferences();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Starter Theme',
-      initialRoute: HomePage.routeName,
+      initialRoute: preferences.lastPage,
       routes: {
         HomePage.routeName: (BuildContext context) {
           return HomePage();
